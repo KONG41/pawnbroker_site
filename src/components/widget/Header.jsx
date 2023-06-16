@@ -19,7 +19,7 @@ const Header = () => {
           </li>
           <li className="pr-10 relative" onClick={()=>{setIsAccount(false); setIsGoldRate(!isGoldRate); setIsCart(false)}}>
             <div className="cursor-pointer"><span className="inline-block">Gold Rate</span><span className="inline-block text-sm ml-1"><FaCaretDown/></span></div>
-            <ul className={`absolute top-[130%] bg-white left-0 text-[12px] border border-slate-300 w-[260px] p-2 rounded-sm ${!isGoldRate && 'hidden'}`}>
+            <ul className={`absolute z-10 top-[130%] bg-white left-0 text-[12px] border border-slate-300 w-[260px] p-2 rounded-sm ${!isGoldRate && 'hidden'}`}>
               <li className="pr-10 mb-1">999 Gold-103.00 Per Gram</li>
               <li className="pr-10 mb-1">916 Gold-97.00 Per Gram</li>
             </ul>
@@ -29,7 +29,7 @@ const Header = () => {
           </li>
           <li className="pr-10 relative" onClick={()=>{setIsAccount(!isAccount); setIsGoldRate(false); setIsCart(false)}}>
             <div className="cursor-pointer"><span className="inline-block">Account</span><span className="inline-block text-sm ml-1"><FaCaretDown/></span></div>
-            <ul className={`absolute top-[130%] bg-white border border-slate-300 p-2 text-[12px] rounded-sm ${!isAccount && 'hidden'}`}>
+            <ul className={`absolute z-10 top-[130%] bg-white border border-slate-300 p-2 text-[12px] rounded-sm ${!isAccount && 'hidden'}`}>
               <li className="pr-10 mb-1">
                 <NavLink to="/login">Login</NavLink>
               </li>
@@ -47,7 +47,7 @@ const Header = () => {
               </p>
             </span>
             <span className="inline-block text-sm ml-3"><FaCaretDown/></span>
-            <div className={`absolute top-[110%] right-0 p-[30px] w-[200px] text-slate-500 text-center bg-white border border-slate-300 text-[12px] rounded-sm ${!isCart && 'hidden'}`}>Empty Cart</div>
+            <div className={`absolute z-10 top-[110%] right-0 p-[30px] w-[200px] text-slate-500 text-center bg-white border border-slate-300 text-[12px] rounded-sm ${!isCart && 'hidden'}`}>Empty Cart</div>
           </li>
         </ul>
       </div>
