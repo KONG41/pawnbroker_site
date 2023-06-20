@@ -4,6 +4,7 @@ import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Shop from "../pages/Shop"
 import Stores from "../pages/Stores"
+import ProductDetail from "../pages/details/ProductDetail";
 const routes = [
     {
         path: '/',
@@ -24,6 +25,10 @@ const routes = [
     {
         path: '/stores',
         element: <Stores />
+    },
+    {
+        path: '/product_detail',
+        element: <ProductDetail />
     }
 
 ]

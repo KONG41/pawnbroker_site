@@ -1,5 +1,5 @@
 import React from 'react'
-import MoreBtn from '../button/MoreBtn'
+import MoreBtn from '../widget/button/MoreBtn'
 
 const BlockRow = (props) => {
   const {data} = props

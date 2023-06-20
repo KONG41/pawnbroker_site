@@ -1,9 +1,9 @@
 import React from 'react'
-import HeroSlide from '../components/widget/hero_section/HeroSlide'
-import ProductSlide from '../components/widget/product_section/ProductSlide'
-import PostPromote from '../components/widget/promote_section/PostPromote'
-import BlockRow from '../components/widget/promote_section/BlockRow'
-import Subscribe from '../components/widget/contact_section/Subscribe'
+import HeroSlide from '../components/hero_section/HeroSlide'
+import ProductSlide from '../components/product_section/ProductSlide'
+import PostPromote from '../components/promote_section/PostPromote'
+import BlockRow from '../components/promote_section/BlockRow'
+import Subscribe from '../components/contact_section/Subscribe'
 import Hero1 from '../assets/images/hero/10-MC-APP-Web-Banner-2880x1220px-FA-1.png'
 import Hero2 from '../assets/images/hero/D15878-MXC_MYS-E-ShopWebBanners-FA-Corporate-Site-1-scaled.jpg'
 import Hero3 from '../assets/images/hero/MaxiPAY_webpage_2800x1200_FA-4-scaled.jpg'
@@ -58,6 +58,11 @@ const Home = () => {
       title: 'Citigems 916 Gold Earrings',
       desc: 'Citigems 916/999 Gold',
       img:'https://maxi-cash.com/wp-content/uploads/2021/07/97403-01-06.jpg'
+    },
+     {
+      title: 'Citigems 916 Love Lock Pendant',
+      desc: 'Citigems 916/999 Gold',
+      img:'https://maxi-cash.com/wp-content/uploads/2021/07/96915-01-06-916-gold-heart-lock-key-pendant.jpg'
     }
   ]
   console.log(promoteData[0]);
@@ -71,7 +76,7 @@ const Home = () => {
           <p className="">Enjoy Singapore's best gold rate with Maxi-Cash Everyday Low Gold Price.</p>
         </div>
         <div className="w-[60%] m-auto mb-40">
-          <ProductSlide data={productData}/>
+          <ProductSlide data={productData} slidePerView={3} autoplay={true} url="/product_detail"/>
         </div>
         <div className="w-[70%] m-auto mb-20">
           <PostPromote revers = {false} data = {promoteData[0]}/>

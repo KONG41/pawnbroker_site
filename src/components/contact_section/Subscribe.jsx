@@ -1,5 +1,5 @@
 import React from 'react'
-import MoreBtn from "../button/MoreBtn"
+import MoreBtn from "../widget/button/MoreBtn"
 const subscribe = () => {
   return (
     <div className="w-full flex flex-col items-center gap-5 pb-20">
