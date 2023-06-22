@@ -18,8 +18,8 @@ const Footer = () => {
         </ul>
         <ul>
           <li><h1 className="font-semibold text-[20px] mb-2">Support</h1></li>
-          <li><NavLink to="#" className="text-white text-[14px]">Contact Us</NavLink></li>
-          <li><NavLink to="#" className="text-white text-[14px]">FAQs</NavLink></li>
+          <li><NavLink to="/contactUs" className="text-white text-[14px]">Contact Us</NavLink></li>
+          <li><NavLink to="/faqs" className="text-white text-[14px]">FAQs</NavLink></li>
           <li><NavLink to="#" className="text-white text-[14px]">Shipping & Returns</NavLink></li>
           <li><NavLink to="#" className="text-white text-[14px]">Tax and Insurance</NavLink></li>
         </ul>
