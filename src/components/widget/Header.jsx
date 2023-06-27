@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import Logo from "../../assets/images/logo/logo.9a9641e6.jpg";
 import { NavLink } from "react-router-dom";
 import { FaShoppingBag, FaCaretDown } from "react-icons/fa";
@@ -7,7 +7,6 @@ const Header = () => {
   const [isAccount, setIsAccount] = useState(false)
   const [isGoldRate, setIsGoldRate] = useState(false)
   const [isCart, setIsCart] = useState(false)
-
   return (
     <div className="w-full flex justify-center">
       <div className=" w-[60%] flex py-4 justify-between items-center">

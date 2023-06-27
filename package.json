@@ -1,7 +1,7 @@
 {
   "name": "pawnbroker_site",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,9 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "fslightbox-react": "^1.7.6",
+    "lightgallery": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.13.0",
     "swiper": "^9.4.1"
   },

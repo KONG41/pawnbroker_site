@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 const Login = () => {
   return (
     <div className="w-full bg-[#f7f7f7]">
@@ -26,7 +26,7 @@ const Login = () => {
           </div>
           <div className="w-[47.99%] border rounded-[4px] p-4 bg-white">
             <h1 className="font-bold text-xl mb-5">New Customers</h1>
-            <button className="w-full py-5 bg-[#0c4ca3] text-white text-lg rounded-[4px] select-none">Create an account</button>
+            <Link to="/register" className="block text-center w-full py-5 bg-[#0c4ca3] text-white text-lg rounded-[4px] select-none">Create an account</Link>
           </div>
         </div>
       </div>

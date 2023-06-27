@@ -6,8 +6,8 @@ import "./styles.css";
 import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import ProductBox from './ProductBox';
 const productSlide = (props) => {
-  const{data, slidePerView, autoplay, url} = props
-  console.log(data)
+  const{data, slidePerView, autoplay, url, detailData} = props
+  
   return (
     <div>
       <Swiper
@@ -23,6 +23,7 @@ const productSlide = (props) => {
         {
           delay: 3500,
           disableOnInteraction: false,
+          pauseOnMouseEnter:true,
         } : false
       }
         modules={[Navigation, Pagination, Mousewheel, Keyboard, Autoplay]}
@@ -31,7 +32,7 @@ const productSlide = (props) => {
         {
           data &&
           data.map((item,index)=>(
-            <SwiperSlide><ProductBox title={item.title} desc={item.desc} img={item.img} url={url}/></SwiperSlide>   
+            <SwiperSlide><ProductBox title={item.title} desc={item.description} img={item.img[0]} url={url} data={data[index]}/></SwiperSlide>   
           ))
         }
          
