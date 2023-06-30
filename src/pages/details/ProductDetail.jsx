@@ -14,41 +14,77 @@ import {MdOutlineArrowBackIosNew} from 'react-icons/md';
 import MoreBtn from '../../components/widget/button/MoreBtn';
 import { useLocation } from 'react-router-dom';
 import {productLists} from '../../assets/data';
-import {Link} from 'react-router-dom';
-
+import {Link, useParams} from 'react-router-dom';
 import LightGallery from 'lightgallery/react';
-
 // import styles
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
 import './ProductDetailStyle.css';
-
 // import plugins if you need
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 import lgVideo from "lightgallery/plugins/video";
+import {getWindowDimensions} from "../../helper/ScreenSize.js";
+
+const FB_URL = import.meta.env.VITE_FACEBOOK;
+const WA_URL = import.meta.env.VITE_WHATAPP;
+const WC_URL = import.meta.env.VITE_WECHAT;
+const LINE_URL = import.meta.env.VITE_LINE;
+const MS_URL = import.meta.env.VITE_MESSENGER;
+const TW_URL = import.meta.env.VITE_TWITTER;
 
 const ProductDetail = () => {
   const location = useLocation();
-  const [detail,setDetail] = useState(location.state);
-  const description = detail.description;
+
+  const [productState,setProductState] = useState(location.state);
+
+  const {id,cate,search} = useParams();
+
+  const [curIndex,setCurIndex] = useState(id - 1);
+
+  const [isMobile, setIsMobile] = useState(false)
+
+  const products = productLists.filter((x)=>{
+    return(
+      cate == 'all' ? x.category.includes('') : x.category.includes(cate)
+    )
+  });
+  
+  const searchProducts = products.filter((x) => {
+    return (
+      search == 'search' ? x.title.includes('') : x.title.includes(search)
+    );
+  });
+
+  const [detail,setDetail] = useState(searchProducts[curIndex]);
+
+  const [description, setDescription] = useState(detail.description);
+
   const [rate,setRate] = useState(detail.rate);
-  const attributes = detail.attributes;
-  const starRated = [];
-  const starTotal = [];
+
+  const [attributes,setAttributes] = useState(detail.attributes);
+
+  const [starRated,setStarRated] = useState([]);
+
+  const [starTotal,setStarTotal] = useState([]);
+
+  const [taps, setTaps] = useState('detail');
+
+  const [openImg,setOpenImg] = useState(false);
+
   for (let i = 0; i < rate; i++) {
       starRated.push(
         <FaStar className="mr-1 inline-block align-middle text-yellow-300"/>
       );
   }
+
   for(let i = 0; i < 5-rate; i++){
     starTotal.push(
       <FaStar className="mr-1 inline-block align-middle"/>
     )
   }
-  const [taps, setTaps] = useState('detail');
-  const [openImg,setOpenImg] = useState(false);
+
   useEffect(() => {
     if(rate > 5){
       setRate(5)
@@ -56,29 +92,44 @@ const ProductDetail = () => {
       setRate(0)
     }
   }, [])
-
+  
   const onInit = (detail) => {
-    console.log("detail", details.instance);
+    console.log("detail");
   };
+
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+    // console.log(windowDimensions)
+    window.addEventListener('resize', handleResize);
+    if (window.innerWidth < 768) {
+      setIsMobile(true)
+    } else{setIsMobile(false)}
+    return () => window.removeEventListener('resize', handleResize);
+  }, [windowDimensions]);
 
   return (
     <div className="w-full bg-[#f7f7f7]">
       {/* menu section */}
-      <div className="w-[65%] m-auto py-14 text-[#305d94] flex flex-row gap-20">
+      <div className="w-[65%] max-xl:w-[90%] m-auto py-14 text-[#305d94] flex flex-row gap-20 max-md:gap-10 max-lg:text-sm">
         <Link to="/shop"><MdOutlineArrowBackIosNew className="inline-block align-middle"/><span className="inline-block align-middle pl-2">Back to shop</span></Link>
         <span>
-          <Link to="/">Home</Link><span className="px-2">/</span><Link to="/shop">Shop</Link>
+          <Link to="/">Home</Link><span className="px-2">/</span><Link to="/shop">Shop</Link><span className="px-2">/</span><Link to="/shop" className="capitalize">{detail.category}</Link>
         </span>
       </div>
-      <div className="w-[65%] m-auto bg-[#e5e5e5]">
+      <div className="w-[65%] max-xl:w-[90%] m-auto bg-[#e5e5e5] max-md:w-full">
         {/* detail section */}
-        <div className="w-full px-7">
-          <div className="flex flex-row gap-11 mb-7">
-            <div className="flex flex-row bg-white p-7 w-[70%] gap-4">
+        <div className="w-full px-7 max-md:py-7">
+          <div className="flex flex-row gap-11 mb-7 max-md:flex-col">
+            <div className="flex flex-row bg-white p-7 w-[70%] max-md:w-full max-md:flex-col gap-4">
               <LightGallery
                 plugins={[lgZoom, lgVideo, lgThumbnail]}
                 onInit={onInit}
-                mode="lg-fade"
+                speed={700}
+                mode="lg-slide"
               >
                 {
                   detail.img.map((item,index)=>(
@@ -108,7 +159,7 @@ const ProductDetail = () => {
               </LightGallery>
 
               <div className="w-full">
-                <p className="font-bold">916 Fold Intertwined Circles Bracelet</p>
+                <p className="font-bold">{detail.title}</p>
                 <h1 className="font-bold text-2xl text-[#00A0AF] mt-7 mb-3">SGD {detail.price}</h1>
                 <p className="text-gray-400 text-sm">
                 {starRated}
@@ -138,28 +189,28 @@ const ProductDetail = () => {
                   <span className="text-[#6c757d] font-semibold mr-4">
                     Share:
                   </span>
-                  <a href="#" className="bg-[#4267B2] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#4267b2af] hover:-translate-y-[5px] duration-300">
+                  <a href={FB_URL}  target="_blank" className="bg-[#4267B2] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#4267b2af] hover:-translate-y-[5px] duration-300">
                     <img src={i_facebook} className="w-[16px] h-[16px] mt-[8px] ml-[8px]"/>
                   </a>
-                  <a href="#" className="bg-[#25d366] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#25d3659a] hover:-translate-y-[5px] duration-300">
+                  <a href={WA_URL}  target="_blank" className="bg-[#25d366] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#25d3659a] hover:-translate-y-[5px] duration-300">
                     <img src={i_whatsapp}className="w-[16px] h-[16px] mt-[8px] ml-[8px]" />
                   </a>
-                  <a href="#"className="bg-[#4EC034] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#4ec034ad] hover:-translate-y-[5px] duration-300" >
+                  <a href={WC_URL} target="_blank" className="bg-[#4EC034] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#4ec034ad] hover:-translate-y-[5px] duration-300" >
                     <img src={i_wechat} className="w-[16px] h-[16px] mt-[8px] ml-[8px]"/>
                   </a>
-                  <a href="#" className="bg-[#00c300] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#00c30096] hover:-translate-y-[5px] duration-300" >
+                  <a href={LINE_URL}  target="_blank" className="bg-[#00c300] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#00c30096] hover:-translate-y-[5px] duration-300" >
                     <img src={i_line} className="w-[16px] h-[16px] mt-[8px] ml-[8px]" />
                   </a>
-                  <a href="#" className="bg-[#448AFF] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#4489ffa2] hover:-translate-y-[5px] duration-300" >
+                  <a href={MS_URL}  target="_blank" className="bg-[#448AFF] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#4489ffa2] hover:-translate-y-[5px] duration-300" >
                     <img src={i_messenger}  className="w-[16px] h-[16px] mt-[8px] ml-[8px]" />
                   </a>
-                  <a href="#"  className="bg-[#55acee] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#55acee98] hover:-translate-y-[5px] duration-300">
+                  <a href={TW_URL}   target="_blank" className="bg-[#55acee] w-[32px] h-[32px] rounded-full mr-2 inline-block align-middle hover:bg-[#55acee98] hover:-translate-y-[5px] duration-300">
                     <img src={i_twitter}  className="w-[16px] h-[16px] mt-[8px] ml-[8px]" />
                   </a>
                 </div>
               </div>
             </div>
-            <div className="bg-white p-7 w-[30%]">
+            <div className="bg-white p-7 w-[30%] max-md:w-full">
               <h1 className="text-[#00457c]">Delivery Options</h1>
               <div className="mt-4">
                 <img
@@ -217,7 +268,7 @@ const ProductDetail = () => {
                     {
                       attributes &&
                       attributes.map((item,index)=>(
-                        <tr className="border-b">
+                        <tr className="border-b" >
                         <td className="p-3 ">{item.title}</td>
                         <td className="p-3 text-gray-500">{item.desc}</td>
                       </tr>
@@ -243,8 +294,11 @@ const ProductDetail = () => {
         </div>
         {/* relate product section */}
         <div className="px-7">
-          <h1 className="text-2xl font-semibold">Related Products</h1>
-          <ProductSlide data={productLists} slidePerView={4} url="/product_detail"/>
+          <h1 className="text-2xl font-semibold float-left">Related Products</h1>
+          <div className="max-xl:w-[90%] max-md:w-[330px] m-auto">
+            <ProductSlide data={productLists} slidePerView={isMobile ? 1 : 4}  reload={true}/>
+          </div>
+          
         </div>
       </div>
     </div>

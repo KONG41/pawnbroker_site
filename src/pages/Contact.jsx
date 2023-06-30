@@ -6,7 +6,7 @@ const Contact = () => {
         <div className="w-full">
         <img src="https://maxi-cash.com/wp-content/uploads/2018/09/30_hero_img.png"/>
         </div>
-        <div className="w-[70%] m-auto">
+        <div className="w-[70%] max-lg:w-[90%] m-auto">
             <div className="py-16">
                 <h1 className="text-3xl mb-5">Contact Us</h1>
                 <p className="mb-3">You are our number 1 priority and your opinion means so muc to us!</p>
@@ -20,7 +20,7 @@ const Contact = () => {
                 </ul>
             </div>
             <div className="py-7">
-                <div className="flex flex-row gap-7 w-[700px] mb-5">
+                <div className="flex flex-row gap-7 w-[700px] max-md:w-full max-sm:flex-col mb-5">
                     <span className="flex flex-col gap-2 w-full">
                         <label>First Name<span className="text-red-500 text-sm mr-5">*</span></label>
                         <input type="text" className="focus:outline-none py-2 bg-slate-100 rounded-md w-full px-3"/>
@@ -30,7 +30,7 @@ const Contact = () => {
                         <input type="text" className="focus:outline-none py-2 bg-slate-100 rounded-md w-full px-3"/>
                     </span>
                 </div>
-                <div className="flex flex-row gap-7 w-[700px] mb-5">
+                <div className="flex flex-row gap-7 w-[700px] max-md:w-full max-sm:flex-col mb-5">
                     <span className="flex flex-col gap-2 w-full">
                         <label>Email Address<span className="text-red-500 text-sm mr-5">*</span></label>
                         <input type="text" className="focus:outline-none py-2 bg-slate-100 rounded-md w-full px-3"/>
@@ -40,19 +40,19 @@ const Contact = () => {
                         <input type="text" className="focus:outline-none py-2 bg-slate-100 rounded-md w-full px-3"/>
                     </span>
                 </div>
-                <div className="flex flex-row gap-7 w-[700px] mb-5">
+                <div className="flex flex-row gap-7 w-[700px] max-md:w-full mb-5">
                     <span className="flex flex-col gap-2 w-full">
                         <label>Subject<span className="text-red-500 text-sm mr-5">*</span></label>
                         <input type="text" className="focus:outline-none py-2 bg-slate-100 rounded-md w-full px-3"/>
                     </span>
                 </div>
-                <div className="flex flex-row gap-7 w-[700px] mb-5">
+                <div className="flex flex-row gap-7 w-[700px] max-md:w-full mb-5">
                     <span className="flex flex-col gap-2 w-full">
                         <label>Enter your Message here<span className="text-red-500 text-sm mr-5">*</span></label>
                         <textarea rows="7" className="focus:outline-none py-2 bg-slate-100 rounded-md w-full px-3"/>
                     </span>
                 </div>
-                <div className="flex flex-col w-[700px] mb-5">
+                <div className="flex flex-col w-[700px] max-md:w-full mb-5">
                     <span className="mb-5">
                         <input type="checkbox" className="inline-block align-middle"/>
                         <p className="inline-block align-middle ml-3">Subscribe to our Mailing List</p>

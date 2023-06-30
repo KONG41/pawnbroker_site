@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom'
 const Login = () => {
   return (
     <div className="w-full bg-[#f7f7f7]">
-      <div className="w-[65%] m-auto pb-44">
+      <div className="w-[65%] max-xl:w-[90%] m-auto pb-44">
         <h1 className="text-xl font-semibold mb-3">Customer Login</h1>
         <p className="text-[#adb5bd] capitalize text-sm mb-7">Access your store account or create a new one</p>
-        <div className="w-full mt-3 flex flex-row justify-between">
-          <div className="w-[47.99%] border rounded-[4px] p-4 bg-white">
+        <div className="w-full mt-3 flex flex-row max-lg:flex-col max-lg:gap-7 justify-between">
+          <div className="w-[47.99%] max-lg:w-full border rounded-[4px] p-4 bg-white">
             <h1 className="text-xl font-bold mb-3">Registered customers</h1>
             <p className="mb-5 text-sm text-[#6c757d]">If you have an account, sign in with your e-mail address</p>
             <span className="w-full text-[#6c757d] mb-5 flex flex-row text-sm items-center">
@@ -24,7 +24,7 @@ const Login = () => {
               <a href="#" className=" text-[#0c4ca3] inline-block ml-3 font-light text-sm">Forget password?</a>
             </span>
           </div>
-          <div className="w-[47.99%] border rounded-[4px] p-4 bg-white">
+          <div className="w-[47.99%] max-lg:w-full border rounded-[4px] p-4 bg-white">
             <h1 className="font-bold text-xl mb-5">New Customers</h1>
             <Link to="/register" className="block text-center w-full py-5 bg-[#0c4ca3] text-white text-lg rounded-[4px] select-none">Create an account</Link>
           </div>

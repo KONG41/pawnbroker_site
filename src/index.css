@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 :root {
   font-family: 'Lato', sans-serif;
   color: rgba(0,0,0,.87);
+  /* scroll-behavior: smooth; */
 };
 p{
   padding: 0;
@@ -13,6 +15,7 @@ p{
 a{
   color: #fff;
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

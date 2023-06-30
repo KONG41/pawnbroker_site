@@ -1,34 +1,56 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {MdArrowDropDown} from 'react-icons/md'
 import { productCategory, productLists } from '../assets/data'
 import {Link} from 'react-router-dom'
+import ReactPaginate from 'react-paginate'
 const Shop = () => {
   const [isShow24, setIsShow24] = useState(false);
   const [isSort,setIsSort] = useState(false);
   const [search,setSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
 
+ 
+
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const [itemsPerPage,setItemPerPage] = useState(9);
+
   const product = productLists.filter((x)=>{
     return(
-    x.category.includes(categoryFilter)
-  )})
+      x.category.includes(categoryFilter)
+  )});
   const searchProducts = product.filter((x) => {
     return (
       x.title.includes(search)
     );
   });
 
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    setCurrentItems(searchProducts.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(searchProducts.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, categoryFilter, search]);
+
+    const handlePageClick = (event) => {
+    const newOffset = event.selected * itemsPerPage % searchProducts.length;
+    console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+    setItemOffset(newOffset);
+    
+  };
+  
   return (
     <div className="w-full bg-[#f7f7f7] block">
-      <div className="w-[65%] m-auto py-7 text-[#305d94] flex flex-row gap-20">
+      <div className="w-[65%] max-md:w-full max-md:px-7 m-auto py-7 text-[#305d94] flex flex-row gap-20">
         <span>
           <a href="/">Home</a>
           <span className="px-2">/</span>
           <a href="/shop">Shop</a>
         </span>
       </div>
-      <div className="w-[65%] m-auto flex flex-row">
-        <div className="w-[30%] p-5 bg-white">
+      <div className="w-[65%] max-xl:w-full m-auto flex flex-row max-md:flex-col">
+        <div className="w-[30%] max-md:w-full p-5 bg-white">
           <div className={`border p-3 rounded-t-[4px] hover:cursor-pointer ${categoryFilter == '' && "bg-[#f7f7f7]" }`} onClick={()=>setCategoryFilter('')}>
             Shop All
           </div>
@@ -40,7 +62,7 @@ const Shop = () => {
             }
           </ul>
         </div>
-        <div className="w-[70%] p-5 pt-0">
+        <div className="w-[70%] max-md:w-full p-5 pt-0 max-md:pt-7">
           <div className="w-full border p-5 bg-white flex flex-row gap-5 rounded-[4px]">
             <input type="text" className="focus:outline-none border w-full rounded-[4px] px-3" onChange={(e)=>{setSearch(e.target.value)}}/>
             <span className=" hover:cursor-pointer select-none py-2 px-3 bg-[#0c4ca3] text-white rounded-[4px]">Search</span>
@@ -64,10 +86,10 @@ const Shop = () => {
           </div>
           <div className="w-full flex flex-row flex-wrap justify-between">
             {
-              searchProducts.length > 0 ?
-                searchProducts.map((item,index)=>(
-                  <div className="w-[32%] bg-white border rounded-[4px] p-4 mb-5">
-                    <Link to="/product_detail" state={item}>
+              currentItems &&
+              currentItems.map((item,index)=>(
+                  <div className="w-[32%] max-lg:w-[48%] bg-white border rounded-[4px] p-4 mb-5">
+                    <Link to={{ pathname: `/product_detail/${index + 1}/${categoryFilter.length > 0 ? item.category : 'all'}/${search.length > 0 ? search : 'search'}` }} state={searchProducts}>
                       <img src={item.img[0]}/>
                       <div className="h-[170px] flex flex-col justify-between">
                         <h1 className="font-bold">{item.title}</h1>
@@ -75,9 +97,37 @@ const Shop = () => {
                       </div>
                     </Link>
                   </div>     
-              )): <div className="text-center w-full text-xl font-light">Not Found</div>
+              ))
+              // <div className="text-center w-full text-xl font-light">Not Found</div>
             }
+            
           </div>
+          <div className="my-7 ">
+            <ReactPaginate
+                nextLabel="next"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={3}
+                marginPagesDisplayed={2}
+                pageCount={pageCount}
+                previousLabel="previous"
+                pageClassName="inline py-2 border border-slate-400 mx-1 text-[#0c4ca3] rounded-[4px] select-none"
+                breakClassName="inline py-2 border border-slate-400 mx-1 text-[#0c4ca3] rounded-[4px] select-none"
+
+                previousClassName="inline py-2 border border-slate-400 mr-3 uppercase text-[#0c4ca3] rounded-[4px] hover:bg-slate-100 hover:text-slate-500 select-non"
+                nextClassName="inline py-2 border border-slate-400 ml-3 uppercase text-[#0c4ca3] rounded-[4px] hover:bg-slate-200 hover:text-slate-500 select-none "
+
+                pageLinkClassName="page-link px-3"
+                previousLinkClassName="page-link px-3"
+                nextLinkClassName="page-link px-3"
+                breakLabel="..."
+                breakLinkClassName="page-link px-3"
+                containerClassName="pagination"
+                activeClassName="bg-[#0c4ca3] text-slate-50"
+                render
+              OnZeroPageCount={null}
+            />   
+          </div>
+         
         </div>
       </div>
     </div>

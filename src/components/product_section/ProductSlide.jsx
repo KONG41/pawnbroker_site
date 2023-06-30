@@ -6,7 +6,7 @@ import "./styles.css";
 import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import ProductBox from './ProductBox';
 const productSlide = (props) => {
-  const{data, slidePerView, autoplay, url, detailData} = props
+  const{data, slidePerView, autoplay, detailData, reload} = props
   
   return (
     <div>
@@ -32,7 +32,7 @@ const productSlide = (props) => {
         {
           data &&
           data.map((item,index)=>(
-            <SwiperSlide><ProductBox title={item.title} desc={item.description} img={item.img[0]} url={url} data={data[index]}/></SwiperSlide>   
+            <SwiperSlide><ProductBox title={item.title} desc={item.description} img={item.img[0]} url={{ pathname: `/product_detail/${index + 1}/all/search` }} data={data[index]} reload={reload}/></SwiperSlide>   
           ))
         }
          

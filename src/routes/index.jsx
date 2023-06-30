@@ -5,8 +5,10 @@ import Register from "../pages/Register"
 import Shop from "../pages/Shop"
 import Stores from "../pages/Stores"
 import ProductDetail from "../pages/details/ProductDetail";
+import PromoteDetail from "../pages/details/PromoteDetail";
 import Contact from "../pages/Contact";
 import Faqs from "../pages/Faqs";
+import Info from "../pages/Info";
 const routes = [
     {
         path: '/',
@@ -29,7 +31,7 @@ const routes = [
         element: <Stores />
     },
     {
-        path: '/product_detail',
+        path: '/product_detail/:id/:cate/:search',
         element: <ProductDetail />
     },
     {
@@ -39,6 +41,14 @@ const routes = [
     {
         path: '/faqs',
         element: <Faqs/>
+    },
+    {
+        path: '/promote_detail/:page',
+        element: <PromoteDetail/>
+    },
+    {
+        path: '/info/:page',
+        element: <Info/>
     }
 
 ]

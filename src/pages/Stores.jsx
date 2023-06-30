@@ -5,9 +5,9 @@ import {central} from '../assets/data'
 const Stores = () => {
   return (
     <div className="w-full bg-[#f7f7f7]">
-      <div className="flex flex-row">
-        <div className="w-[50%] flex flex-col items-center justify-center">
-          <div className="w-[70%]">
+      <div className="flex flex-row max-lg:flex-col-reverse">
+        <div className="w-[50%] max-lg:w-full max-lg:py-10 flex flex-col items-center justify-center">
+          <div className="w-[70%] max-md:w-[85%]">
             <h1 className="text-4xl mb-7">Our Stores</h1>
             <p className="mb-7">Maxi-Cash has the largest network of pawnshops and retail outlets which are conveniently located near amenities like bus interchanges and MRT stations.</p>
             <p className="mb-7">Find a store near you. Love our services? Click on the location icon of the store that you have visited and give us your review.</p>
@@ -19,9 +19,9 @@ const Stores = () => {
             </div>
           </div>
         </div>
-        <img src="https://maxi-cash.com/wp-content/uploads/2021/07/Maxi-Cash-SG_Locate-Our-Stores.png" className="w-[50%]"/>
+        <img src="https://maxi-cash.com/wp-content/uploads/2021/07/Maxi-Cash-SG_Locate-Our-Stores.png" className="w-[50%] max-lg:w-full"/>
       </div>
-      <div className="w-[70%] m-auto">
+      <div className="w-[70%] max-lg:w-[90%] m-auto">
         <h1 className="text-xl my-7">Central</h1>
         <div className="flex flex-row flex-wrap justify-between">
           {central.map((item,index)=>(
