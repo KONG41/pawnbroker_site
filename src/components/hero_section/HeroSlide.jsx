@@ -28,9 +28,12 @@ const HeroSlide = (props) => {
       >
         {
           slideShow && slideShow.map((item,index)=>(
-            <SwiperSlide>
-              <img src={item} />
-            </SwiperSlide>)
+          
+              <SwiperSlide key={`hero-${index}`}>
+               <img src={item} />
+              </SwiperSlide>
+       
+            )
           )
         }
       </Swiper>

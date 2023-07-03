@@ -57,7 +57,7 @@ const Shop = () => {
           <ul className="capitalize">
             {
               productCategory.map((item,index)=>(
-                <li key="index" className={`border border-t-0 hover:cursor-pointer hover:bg-[#f7f7f7] p-3 ${categoryFilter == item && "bg-[#f7f7f7]"}`} onClick={()=>{setCategoryFilter(item)}}>{item}</li>
+                <li key={`cat-${index}`} className={`border border-t-0 hover:cursor-pointer hover:bg-[#f7f7f7] p-3 ${categoryFilter == item && "bg-[#f7f7f7]"}`} onClick={()=>{setCategoryFilter(item)}}>{item}</li>
               ))
             }
           </ul>
@@ -88,7 +88,7 @@ const Shop = () => {
             {
               currentItems &&
               currentItems.map((item,index)=>(
-                  <div className="w-[32%] max-lg:w-[48%] bg-white border rounded-[4px] p-4 mb-5">
+                  <div className="w-[32%] max-lg:w-[48%] bg-white border rounded-[4px] p-4 mb-5" key={`products-${index}`}>
                     <Link to={{ pathname: `/product_detail/${index + 1}/${categoryFilter.length > 0 ? item.category : 'all'}/${search.length > 0 ? search : 'search'}` }} state={searchProducts}>
                       <img src={item.img[0]}/>
                       <div className="h-[170px] flex flex-col justify-between">
@@ -112,10 +112,8 @@ const Shop = () => {
                 previousLabel="previous"
                 pageClassName="inline py-2 border border-slate-400 mx-1 text-[#0c4ca3] rounded-[4px] select-none"
                 breakClassName="inline py-2 border border-slate-400 mx-1 text-[#0c4ca3] rounded-[4px] select-none"
-
                 previousClassName="inline py-2 border border-slate-400 mr-3 uppercase text-[#0c4ca3] rounded-[4px] hover:bg-slate-100 hover:text-slate-500 select-non"
                 nextClassName="inline py-2 border border-slate-400 ml-3 uppercase text-[#0c4ca3] rounded-[4px] hover:bg-slate-200 hover:text-slate-500 select-none "
-
                 pageLinkClassName="page-link px-3"
                 previousLinkClassName="page-link px-3"
                 nextLinkClassName="page-link px-3"

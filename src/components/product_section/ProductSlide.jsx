@@ -32,7 +32,9 @@ const productSlide = (props) => {
         {
           data &&
           data.map((item,index)=>(
-            <SwiperSlide><ProductBox title={item.title} desc={item.description} img={item.img[0]} url={{ pathname: `/product_detail/${index + 1}/all/search` }} data={data[index]} reload={reload}/></SwiperSlide>   
+         
+              <SwiperSlide key={`product-${index}`}><ProductBox title={item.title} desc={item.description} img={item.img[0]} url={{ pathname: `/product_detail/${index + 1}/all/search` }} data={data[index]} reload={reload}/></SwiperSlide>   
+       
           ))
         }
          

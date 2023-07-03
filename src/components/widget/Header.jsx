@@ -9,13 +9,14 @@ import {RiFacebookLine, RiInstagramLine, RiYoutubeLine} from "react-icons/ri";
 import { useTranslation } from "react-i18next";
 import gb from '../../assets/images/icons/gb.svg';
 import skr from '../../assets/images/icons/kr.svg';
+import {useStateContext} from '../../helper/ContextProvider';
 const Header = () => {
+  const {windowDimensions, setWindowDimensions} = useStateContext()
   const [isAccount, setIsAccount] = useState(false)
   const [isGoldRate, setIsGoldRate] = useState(false)
   const [isCart, setIsCart] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [isLang, setIsLang] = useState(false)
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
   const handleIsMobile = () =>{
     setIsMobile(!isMobile)
   }
@@ -36,8 +37,6 @@ const Header = () => {
   }, [windowDimensions]);
   return (
     <div className="w-full flex justify-center sticky top-0 z-10 bg-white border-b">
-        
-
       <div className=" w-[60%] max-2xl:w-[90%] max-lg:w-full flex py-4 justify-between items-center relative">
       
         <NavLink to="/"><img src={Logo} className="h-[40px]" onClick={()=>{setIsMobile(false)}}/></NavLink>

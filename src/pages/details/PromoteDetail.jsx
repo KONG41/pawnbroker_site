@@ -4,25 +4,19 @@ import SimplePromote from '../../components/promote_section/SimplePromote'
 import PostPromote from '../../components/promote_section/PostPromote'
 import {samplePromoteData, productLists} from '../../assets/data'
 import ProductSlide from '../../components/product_section/ProductSlide'
-import {getWindowDimensions} from "../../helper/ScreenSize.js";
+import { useStateContext } from '../../helper/ContextProvider'
 const PromoteDetail = () => {
+    const {windowDimensions} = useStateContext()
     const {page} = useParams()
     const [isMobile, setIsMobile] = useState(false)
     const data = samplePromoteData.filter((x)=>{
         return(
         x.page.includes(page)
     )});
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
     useEffect(() => {
-        function handleResize() {
-        setWindowDimensions(getWindowDimensions());
-        }
-        console.log(windowDimensions)
-        window.addEventListener('resize', handleResize);
-        if (window.innerWidth < 768) {
+        if (windowDimensions.width < 768) {
         setIsMobile(true)
         } else{setIsMobile(false)}
-        return () => window.removeEventListener('resize', handleResize);
     }, [windowDimensions]);
   return (
     <>

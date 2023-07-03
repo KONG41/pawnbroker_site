@@ -2,6 +2,7 @@ import React ,{useRef,useEffect} from "react"
 import Header from "./widget/Header";
 import Footer from "./widget/Footer";
 import { Outlet,useLocation } from "react-router-dom";
+
 const Layout = (props) => {
   const homeRef = useRef(null);
   const location = useLocation();
@@ -21,6 +22,7 @@ const Layout = (props) => {
           <Outlet context={[homeRef]}></Outlet>
         <Footer></Footer>
     </div>
+    
   )
 }
 

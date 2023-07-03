@@ -9,29 +9,20 @@ import Hero2 from '../assets/images/hero/D15878-MXC_MYS-E-ShopWebBanners-FA-Corp
 import Hero3 from '../assets/images/hero/MaxiPAY_webpage_2800x1200_FA-4-scaled.jpg'
 import Hero4 from '../assets/images/hero/PAYNOW_V2.png'
 import {productLists} from '../assets/data'
-import {getWindowDimensions} from "../helper/ScreenSize.js";
 import { promoteData, blockRowData } from '../assets/data'
 import { useTranslation } from 'react-i18next'
 import { useOutletContext } from 'react-router-dom'
-
+import { useStateContext } from '../helper/ContextProvider'
 const Home = () => {
+  const {windowDimensions} = useStateContext()
   const hero = [Hero1,Hero2,Hero3,Hero4];
   const [isMobile, setIsMobile] = useState(false)
   const { t } = useTranslation()
   const [homeRef] = useOutletContext();
-  // console.log(homeRef)
-
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions()) 
   useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-    // console.log(windowDimensions)
-    window.addEventListener('resize', handleResize);
-    if (window.innerWidth < 768) {
+    if (windowDimensions.width < 768) {
       setIsMobile(true)
     } else{setIsMobile(false)}
-    return () => window.removeEventListener('resize', handleResize);
   }, [windowDimensions]);
   return (
     <div className="w-full bg-gray-50">

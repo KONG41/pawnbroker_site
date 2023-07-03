@@ -10,11 +10,11 @@ const subscribe = () => {
                  <label className="bg-gray-50 absolute top-[-13px] left-[13px] px-2">E-mail<span className="text-red-400 text-[12px]">*</span></label>
                  <input type="text" placeholder="user@gmail.com" className="bg-transparent focus:outline-none text-sm font-semibold"/>
             </span>
-            <span className="border-[1px] relative border-gray-500 px-[10px] py-[15px] rounded-[4px] w-[30%] max-md:w-full" max-md:w-full>
+            <span className="border-[1px] relative border-gray-500 px-[10px] py-[15px] rounded-[4px] w-[30%] max-md:w-full">
                  <label className="bg-gray-50 absolute top-[-13px] left-[13px] px-2">First Name<span className="text-red-400 text-[12px]">*</span></label>
                  <input type="text" placeholder="Enter your first name" className="bg-transparent focus:outline-none text-sm font-semibold"/>
             </span>
-            <span className="border-[1px] relative border-gray-500 px-[10px] py-[15px] rounded-[4px] w-[30%] max-md:w-full" max-md:w-full>
+            <span className="border-[1px] relative border-gray-500 px-[10px] py-[15px] rounded-[4px] w-[30%] max-md:w-full">
                  <label className="bg-gray-50 absolute top-[-13px] left-[13px] px-2">Last Name<span className="text-red-400 text-[12px]">*</span></label>
                  <input type="text" placeholder="Enter your last name" className="bg-transparent focus:outline-none text-sm font-semibold"/>
             </span>

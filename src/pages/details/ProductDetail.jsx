@@ -26,7 +26,7 @@ import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 import lgVideo from "lightgallery/plugins/video";
 import {getWindowDimensions} from "../../helper/ScreenSize.js";
-
+import { useStateContext } from "../../helper/ContextProvider";
 const FB_URL = import.meta.env.VITE_FACEBOOK;
 const WA_URL = import.meta.env.VITE_WHATAPP;
 const WC_URL = import.meta.env.VITE_WECHAT;
@@ -35,53 +35,39 @@ const MS_URL = import.meta.env.VITE_MESSENGER;
 const TW_URL = import.meta.env.VITE_TWITTER;
 
 const ProductDetail = () => {
+  const {windowDimensions} = useStateContext()
   const location = useLocation();
-
   const [productState,setProductState] = useState(location.state);
-
   const {id,cate,search} = useParams();
-
   const [curIndex,setCurIndex] = useState(id - 1);
-
   const [isMobile, setIsMobile] = useState(false)
-
   const products = productLists.filter((x)=>{
     return(
       cate == 'all' ? x.category.includes('') : x.category.includes(cate)
     )
   });
-  
   const searchProducts = products.filter((x) => {
     return (
       search == 'search' ? x.title.includes('') : x.title.includes(search)
     );
   });
-
   const [detail,setDetail] = useState(searchProducts[curIndex]);
-
   const [description, setDescription] = useState(detail.description);
-
   const [rate,setRate] = useState(detail.rate);
-
   const [attributes,setAttributes] = useState(detail.attributes);
-
   const [starRated,setStarRated] = useState([]);
-
   const [starTotal,setStarTotal] = useState([]);
-
   const [taps, setTaps] = useState('detail');
-
   const [openImg,setOpenImg] = useState(false);
-
   for (let i = 0; i < rate; i++) {
       starRated.push(
-        <FaStar className="mr-1 inline-block align-middle text-yellow-300"/>
+        <FaStar className="mr-1 inline-block align-middle text-yellow-300" key={`rate-${i}`}/>
       );
   }
 
   for(let i = 0; i < 5-rate; i++){
     starTotal.push(
-      <FaStar className="mr-1 inline-block align-middle"/>
+      <FaStar className="mr-1 inline-block align-middle" key={`unrate-${i}`}/>
     )
   }
 
@@ -97,18 +83,10 @@ const ProductDetail = () => {
     console.log("detail");
   };
 
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
-
   useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-    // console.log(windowDimensions)
-    window.addEventListener('resize', handleResize);
-    if (window.innerWidth < 768) {
+    if (windowDimensions.width < 768) {
       setIsMobile(true)
     } else{setIsMobile(false)}
-    return () => window.removeEventListener('resize', handleResize);
   }, [windowDimensions]);
 
   return (
@@ -168,12 +146,12 @@ const ProductDetail = () => {
                 </p>
                 <p className="border-b my-7" />
                 <span className="flex items-center my-7">
-                  <labe className="mr-4">
+                  <label className="mr-4">
                     Quantity<span className="text-sm text-red-600">*</span>
-                  </labe>
+                  </label>
                   <input
                     type="number"
-                    value ={1}
+                    defaultValue = {1}
                     className="focus:outline-none border p-2 rounded-[4px] w-full"
                   />
                 </span>
@@ -263,12 +241,12 @@ const ProductDetail = () => {
               </div>
 
               <div className={`${taps == "attributes" ? "block" : "hidden"}`}>
-                <table class="table-auto w-full">
+                <table className="table-auto w-full">
                   <tbody className="border-t capitalize">
                     {
                       attributes &&
                       attributes.map((item,index)=>(
-                        <tr className="border-b" >
+                        <tr className="border-b" key={`attribute-${index}`} >
                         <td className="p-3 ">{item.title}</td>
                         <td className="p-3 text-gray-500">{item.desc}</td>
                       </tr>
