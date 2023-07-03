@@ -12,18 +12,21 @@ import {productLists} from '../assets/data'
 import {getWindowDimensions} from "../helper/ScreenSize.js";
 import { promoteData, blockRowData } from '../assets/data'
 import { useTranslation } from 'react-i18next'
+import { useOutletContext } from 'react-router-dom'
 
 const Home = () => {
   const hero = [Hero1,Hero2,Hero3,Hero4];
   const [isMobile, setIsMobile] = useState(false)
   const { t } = useTranslation()
+  const [homeRef] = useOutletContext();
+  // console.log(homeRef)
 
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions()) 
   useEffect(() => {
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
     }
-    console.log(windowDimensions)
+    // console.log(windowDimensions)
     window.addEventListener('resize', handleResize);
     if (window.innerWidth < 768) {
       setIsMobile(true)
@@ -39,19 +42,19 @@ const Home = () => {
           <p className="max-md:text-md">Enjoy Singapore's best gold rate with Maxi-Cash Everyday Low Gold Price.</p>
           <p>{t('products')}</p>
         </div>
-        <div className="w-[60%] max-xl:w-[95%] max-md:w-[300px] m-auto mb-40">
+        <div className="w-[60%]  max-2xl:w-[95%] max-md:w-[300px] m-auto mb-40">
           <ProductSlide data={productLists} slidePerView={isMobile ? 1 : 3} autoplay={true} />
         </div>
-        <div className="w-[70%] max-xl:w-[95%] m-auto mb-20">
+        <div className="w-[70%]  max-2xl:w-[95%] m-auto mb-20">
           <PostPromote revers = {false} data = {promoteData[0]}/>
         </div>
-        <div className="w-[70%] max-xl:w-[95%] m-auto pb-20">
+        <div className="w-[70%] max-2xl:w-[95%] m-auto pb-20">
           <PostPromote revers = {true} data = {promoteData[1]}/>
         </div>
-        <div className="w-[70%] m-auto max-xl:w-[95%]">
+        <div className="w-[70%] m-auto  max-xl:w-[95%]">
           <BlockRow data = {blockRowData}/>
         </div>
-        <div className="w-[70%] max-xl:w-[90%] m-auto mt-20">
+        <div className="w-[70%]  max-2xl:w-[90%] m-auto mt-20">
           <Subscribe />
         </div>
     </div>

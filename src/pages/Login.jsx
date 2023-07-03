@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 const Login = () => {
   return (
     <div className="w-full bg-[#f7f7f7]">
-      <div className="w-[65%] max-xl:w-[90%] m-auto pb-44">
+      <div className="w-[65%] max-2xl:w-[90%] m-auto pb-44">
         <h1 className="text-xl font-semibold mb-3">Customer Login</h1>
         <p className="text-[#adb5bd] capitalize text-sm mb-7">Access your store account or create a new one</p>
         <div className="w-full mt-3 flex flex-row max-lg:flex-col max-lg:gap-7 justify-between">

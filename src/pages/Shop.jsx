@@ -42,14 +42,14 @@ const Shop = () => {
   
   return (
     <div className="w-full bg-[#f7f7f7] block">
-      <div className="w-[65%] max-md:w-full max-md:px-7 m-auto py-7 text-[#305d94] flex flex-row gap-20">
+      <div className="2xl:w-[65%] xl:w-[90%] max-xl:w-[90%] max-md:px-7 m-auto py-7 text-[#305d94] flex flex-row gap-20">
         <span>
           <a href="/">Home</a>
           <span className="px-2">/</span>
           <a href="/shop">Shop</a>
         </span>
       </div>
-      <div className="w-[65%] max-xl:w-full m-auto flex flex-row max-md:flex-col">
+      <div className="w-[65%] max-2xl:w-[90%] m-auto flex flex-row max-md:flex-col">
         <div className="w-[30%] max-md:w-full p-5 bg-white">
           <div className={`border p-3 rounded-t-[4px] hover:cursor-pointer ${categoryFilter == '' && "bg-[#f7f7f7]" }`} onClick={()=>setCategoryFilter('')}>
             Shop All

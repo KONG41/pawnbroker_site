@@ -12,7 +12,7 @@ const Footer = () => {
   }
   return (
     <div className="w-full bg-[#0c4ca3] flex justify-center text-white relative">
-      <div className="w-[60%] py-14 flex justify-around max-md:flex-col max-xl:w-[90%] max-lg:w-full max-md:w-[90%] max-md:gap-5">
+      <div className="w-[60%] py-14 flex justify-around max-md:flex-col max-2xl:w-[90%] max-lg:w-full max-md:w-[90%] max-md:gap-5">
         <div className="w-[300px]">
           <Link to="/"><img className="w-[250px]" src={footerLogo} /></Link>
           <p className="text-[14px]">© Copyright 2020-2023 Maxi-Cash</p>

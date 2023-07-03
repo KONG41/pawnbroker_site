@@ -13,13 +13,13 @@ const Policy = () => {
 <br/>
 <p>Except where otherwise specified, all capitalised terms in this Policy shall have the same meaning as they have in the Terms and Conditions (available at [http://maxi-cash.com/], which also includes the provisions in this Policy.&nbsp;</p>
 <br/>
-<ol  className = "list-decimal ml-5 list-outside"className="list-decimal list-outside ml-5">
+<ol  className = "list-decimal ml-5 list-outside">
 	<li><strong>COLLECTION AND PROCESSING OF PERSONAL DATA</strong>
 
-	<ol  className = "list-decimal ml-5 list-outside"className="list-decimal list-outside ml-5">
+	<ol  className = "list-decimal ml-5 list-outside">
 		<li>You can use and browse our Sites without disclosing your personal data, and are not required to provide personal data as a condition of using our website, except as may be necessary in the course of us providing you with our Services, to respond to your requests or in cases where you contact us directly.&nbsp;</li>
 		<li>We collect personal data only when you provide it to us, through emails, inquiries and requests, and similar situations in which you have chosen to provide the information to us. We may collect your personal data when you:&nbsp;
-		<ol  className = "list-decimal ml-5 list-outside"className="list-decimal list-outside ml-5">
+		<ol  className = "list-decimal ml-5 list-outside">
 			<li>Create an Account with us;</li>
 			<li>Access and/or use the Services, which includes the eShop and/or the iPayment Service;</li>
 			<li>Access and/or use any support or other related services connected to the Sites and/or our Services;</li>
@@ -29,7 +29,7 @@ const Policy = () => {
 		</ol>
 		</li>
 		<li>Personal information collected may include, without limitation, the following information:&nbsp;
-		<ol  className = "list-decimal ml-5 list-outside"className="list-decimal list-outside ml-5">
+		<ol  className = "list-decimal ml-5 list-outside">
 			<li>Name</li>
 			<li>NRIC/FIN/Passport number;</li>
 			<li>Address;</li>
@@ -63,7 +63,7 @@ const Policy = () => {
 	</li>
 </ol>
 
-<ol  className = "list-decimal ml-5 list-outside"start="3">
+<ol  className = "list-decimal ml-5 list-outside" start="3">
 	<li><strong>DISCLOSURE OF YOUR PERSONAL DATA</strong>
 
 	<ol className="list-decimal ml-5 list-outside">
@@ -81,25 +81,25 @@ const Policy = () => {
 	</li>
 </ol>
 
-<ol  className = "list-decimal ml-5 list-outside"start="4">
+<ol  className = "list-decimal ml-5 list-outside" start="4">
 	<li><strong>ACCESS AND CONTROL OF DATA</strong></li>
 </ol>
 
 <p>We offer settings control to manage some aspects of the personal information that we have about you. You may update any of your personal information we possess by means of updating and accessing your account details, and if not, then by contacting us.&nbsp;</p>
 <br/>
-<ol  className = "list-decimal ml-5 list-outside"start="5">
+<ol  className = "list-decimal ml-5 list-outside" start="5">
 	<li><strong>RETENTION OF DATA</strong></li>
 </ol>
 
 <p>We retain collected personal information while your account is in existence or as needed to provide you with the Services. This includes data you provide to us, and data generated or inferred from your use of our Services.&nbsp;</p>
 <br/>
-<ol  className = "list-decimal ml-5 list-outside"start="6">
+<ol  className = "list-decimal ml-5 list-outside" start="6">
 	<li><strong>RIGHT TO WITHDRAW CONSENT, REQUEST ACCESS TO AND CORRECTION/DELETION OF PERSONAL DATA</strong></li>
 </ol>
 
 <p>Our Customer Service Team is responsible for ensuring that requests for access to information and amendment of information are properly dealt with. All requests for information or requests for the amendment of information held by Maxi-Cash shall make through to our Customer Service Team by calling them at +65 3129 7978.</p>
 <br/>
-<ol  className = "list-decimal ml-5 list-outside"start="7">
+<ol  className = "list-decimal ml-5 list-outside" start="7">
 	<li><strong>SAFEGUARDING YOUR ACCESS</strong></li>
 </ol>
 
@@ -116,7 +116,7 @@ const Policy = () => {
 	<li>Ensure that you regularly update to the latest version of the Maxi-Cash App.</li>
 </ol>
 <br/>
-<ol  className = "list-decimal ml-5 list-outside"start="8">
+<ol  className = "list-decimal ml-5 list-outside" start="8">
 	<li><strong>THIRD-PARTY WEBSITES</strong></li>
 </ol>
 
@@ -124,7 +124,7 @@ const Policy = () => {
 <br/>
 <p>If you have any doubts about the privacy of the information you are providing on such third-party website, you should contact the third-party website directly for more information and review their privacy policy. Maxi-Cash shall not be responsible for the actions of such third parties in any manner whatsoever, including but not limited to any violation of such privacy policies or otherwise.&nbsp;</p>
 <br/>
-<ol  className = "list-decimal ml-5 list-outside"start="9">
+<ol  className = "list-decimal ml-5 list-outside" start="9">
 	<li><strong>GENERAL</strong></li>
 </ol>
 

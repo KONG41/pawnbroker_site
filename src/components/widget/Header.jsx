@@ -38,7 +38,7 @@ const Header = () => {
     <div className="w-full flex justify-center sticky top-0 z-10 bg-white border-b">
         
 
-      <div className=" w-[60%] max-xl:w-[90%] max-lg:w-full flex py-4 justify-between items-center relative">
+      <div className=" w-[60%] max-2xl:w-[90%] max-lg:w-full flex py-4 justify-between items-center relative">
       
         <NavLink to="/"><img src={Logo} className="h-[40px]" onClick={()=>{setIsMobile(false)}}/></NavLink>
         <span className="hidden max-md:block text-2xl px-7 hover:cursor-pointer" onClick={handleIsMobile}><RxHamburgerMenu/></span>
